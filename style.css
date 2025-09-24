@@ -1,0 +1,36 @@
+body {
+  margin: 0;
+  background: linear-gradient(135deg, #0f0c29, #302b63);
+  color: #ffd700;
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+#app {
+  text-align: center;
+  padding: 20px;
+}
+button {
+  background: linear-gradient(to right, #ff416c, #ff4b2b);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 5px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+input {
+  padding: 8px;
+  margin: 5px;
+  width: 200px;
+  border-radius: 5px;
+  border: 1px solid #ff4b2b;
+}
+#status {
+  margin: 20px;
+  padding: 15px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 10px;
+}

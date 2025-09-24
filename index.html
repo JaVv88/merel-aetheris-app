@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Merel·Aetheris</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+    <!-- Pantalla de login -->
+    <div id="login-screen">
+      <h1>✨ MEREL·AETHERIS ✨</h1>
+      <button id="google-login">Iniciar con Google</button>
+      <input type="email" id="email" placeholder="Email">
+      <input type="password" id="password" placeholder="Contraseña">
+      <button id="signup">Crear cuenta</button>
+      <button id="login">Iniciar sesión</button>
+    </div>
+
+    <!-- Pantalla principal -->
+    <div id="main-screen" style="display:none;">
+      <lottie-player 
+        id="avatar" 
+        src="merel-avatar.json"
+        background="transparent"
+        speed="1"
+        style="width: 300px; height: 300px;"
+        loop>
+      </lottie-player>
+      <div id="status">Haz clic en "Escúchame" y habla.</div>
+      <button id="mic-btn">🎤 Escúchame</button>
+      <button id="logout">Cerrar sesión</button>
+    </div>
+  </div>
+
+  <!-- Lottie Player -->
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+  
+  <!-- Tu configuración de Firebase -->
+  <script>
+    const firebaseConfig = {
+  apiKey: "AIzaSyA4Hxt5b8o196MNA7-rINRcVAHX2j3vXro",
+  authDomain: "merel-aetheris.firebaseapp.com",
+  projectId: "merel-aetheris",
+  storageBucket: "merel-aetheris.firebasestorage.app",
+  messagingSenderId: "380975317266",
+  appId: "1:380975317266:web:07da1fcfd4eb2c7d9033cb",
+  measurementId: "G-KPBXR33YWY"
+};
+    firebase.initializeApp(firebaseConfig);
+  </script>
+  
+  <script src="app.js"></script>
+</body>
+</html>
