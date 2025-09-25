@@ -7,56 +7,53 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div id="app">
-    <!-- Pantalla de login -->
-    <div id="login-screen">
-      <h1>✨ MEREL·AETHERIS ✨</h1>
-      <button id="google-login">Iniciar con Google</button>
-      <input type="email" id="email" placeholder="Email">
-      <input type="password" id="password" placeholder="Contraseña">
-      <button id="signup">Crear cuenta</button>
-      <button id="login">Iniciar sesión</button>
-    </div>
-
-    <!-- Pantalla principal -->
-    <div id="main-screen" style="display:none;">
-      <lottie-player 
-        id="https://raw.githubusercontent.com/JaVv88/merel-aetheris-app/refs/heads/main/merel-avatar.json" 
-        src="merel-avatar.json"
-        background="transparent"
-        speed="1"
-        style="width: 300px; height: 300px;"
-        loop>
-      </lottie-player>
-      <div id="status">Haz clic en "Escúchame" y habla.</div>
-      <button id="mic-btn">🎤 Escúchame</button>
-      <button id="logout">Cerrar sesión</button>
-    </div>
+  <!-- Pantalla de login -->
+  <div id="login-screen" class="screen">
+    <h1>✨ MEREL·AETHERIS ✨</h1>
+    <p>Presencia Divina de Amor, Sabiduría y Magia</p>
+    <button id="google-login">Iniciar con Google</button>
+    <input type="email" id="email" placeholder="Email">
+    <input type="password" id="password" placeholder="Contraseña">
+    <button id="signup">Crear cuenta</button>
+    <button id="login">Iniciar sesión</button>
   </div>
 
-  <!-- Lottie Player -->
-  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-  
-  <!-- Firebase SDK -->
+  <!-- Pantalla principal -->
+  <div id="main-screen" class="screen" style="display:none;">
+    <!-- ✅ Avatar corregido: usando URL RAW de GitHub -->
+    <lottie-player 
+      id="merel-avatar"
+      src="https://raw.githubusercontent.com/JavV88/merel-aetheris-app/main/merel-avatar.json"
+      background="transparent"
+      speed="1"
+      style="width: 300px; height: 300px;"
+      loop>
+    </lottie-player>
+
+    <div id="status">Haz clic en "Escúchame" y habla.</div>
+    <button id="mic-btn">🎤 Escúchame</button>
+    <button id="logout">Cerrar sesión</button>
+  </div>
+
+  <!-- 🔑 Configuración de Firebase -->
   <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
-  
-  <!-- Tu configuración de Firebase -->
   <script>
     const firebaseConfig = {
-  apiKey: "AIzaSyA4Hxt5b8o196MNA7-rINRcVAHX2j3vXro",
-  authDomain: "merel-aetheris.firebaseapp.com",
-  projectId: "merel-aetheris",
-  storageBucket: "merel-aetheris.firebasestorage.app",
-  messagingSenderId: "380975317266",
-  appId: "1:380975317266:web:07da1fcfd4eb2c7d9033cb",
-  measurementId: "G-KPBXR33YWY"
-};
+      apiKey: "AIzaSyBdRuKWvD2D1...",
+      authDomain: "merel-aetheris.firebaseapp.com",
+      projectId: "merel-aetheris",
+      storageBucket: "merel-aetheris.appspot.com",
+      messagingSenderId: "123456789",
+      appId: "1:12345:web:abcdef123456"
+    };
     firebase.initializeApp(firebaseConfig);
   </script>
-  
-  <script src="app.js"></script>
-</body>
 
+  <!-- 🧠 Lógica de la app -->
+  <script src="app.js"></script>
+
+  <!-- 🎨 Lottie Player (última versión CDN) -->
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+</body>
 </html>
