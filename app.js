@@ -1,5 +1,5 @@
 // 🔑 Tu token de Hugging Face (gratuito)
-const HF_TOKEN = "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"; // ← ¡Reemplaza esta línea con tu token real!
+const HF_TOKEN = "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"; // ← ¡Reemplaza esta línea con tu token real!
 
 // Elementos
 const loginScreen = document.getElementById('login-screen');
@@ -103,4 +103,5 @@ function speak(text) {
     speechSynthesis.speak(utterance);
   }
 }
+
 
