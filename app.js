@@ -23,14 +23,22 @@ firebase.auth().onAuthStateChanged(user => {
 document.getElementById('login').onclick = () => {
   const email = document.getElementById('email').value;
   const password = document.getElementById('password').value;
-  firebase.auth().signInWithEmailAndPassword(email, password);
+  firebase.auth().signInWithEmailAndPassword(email, password)
+    .catch(error => {
+      console.error("Error de inicio de sesión:", error);
+      alert("Error: " + error.message);
+    });
 };
 
 // Crear cuenta
 document.getElementById('signup').onclick = () => {
   const email = document.getElementById('email').value;
   const password = document.getElementById('password').value;
-  firebase.auth().createUserWithEmailAndPassword(email, password);
+  firebase.auth().createUserWithEmailAndPassword(email, password)
+    .catch(error => {
+      console.error("Error al crear cuenta:", error);
+      alert("Error: " + error.message);
+    });
 };
 
 // Cerrar sesión
@@ -103,5 +111,6 @@ function speak(text) {
     speechSynthesis.speak(utterance);
   }
 }
+
 
 
