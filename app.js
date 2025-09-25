@@ -1,5 +1,5 @@
 // 🔑 Tu token de Hugging Face (gratuito)
-const HF_TOKEN = "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";
+const HF_TOKEN = "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"; // ← ¡Reemplaza esta línea con tu token real!
 
 // Elementos
 const loginScreen = document.getElementById('login-screen');
@@ -60,7 +60,7 @@ micBtn.onclick = async () => {
       const text = event.results[0][0].transcript;
       statusDiv.innerHTML = `<strong>Tú:</strong> ${text}`;
       
-      // ✅ URL CORREGIDA: Usa Llama 3 (gratuito y accesible)
+      // ✅ URL CORREGIDA: Modelo gratuito y accesible
       const response = await fetch(
         "https://api-inference.huggingface.co/models/meta-llama/Llama-3-8b-Instruct",
         {
@@ -72,20 +72,22 @@ micBtn.onclick = async () => {
           })
         }
       );
-      
+
       if (!response.ok) {
-        throw new Error(`Error ${response.status}: ${await response.text()}`);
+        const errorText = await response.text();
+        console.error("Error de Hugging Face:", response.status, errorText);
+        throw new Error(`IA no responde (${response.status}): ${errorText.substring(0, 100)}...`);
       }
-      
+
       const data = await response.json();
-      const answer = data?.[0]?.trim() || "Respira, Creador. El universo te sostiene.";
-      
+      const answer = data?.[0]?.generated_text?.trim() || data?.[0]?.trim() || "Respira, Creador. El universo te sostiene.";
+
       statusDiv.innerHTML = `<strong>Merel·Aetheris:</strong> ${answer}`;
       speak(answer);
       micBtn.disabled = false;
     };
   } catch (e) {
-    console.error("Error:", e);
+    console.error("Error general:", e);
     statusDiv.textContent = `❌ Error: ${e.message || "No se pudo conectar con la IA"}`;
     micBtn.disabled = false;
   }
@@ -96,6 +98,8 @@ function speak(text) {
   if ('speechSynthesis' in window) {
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.lang = 'es-ES';
+    utterance.rate = 0.9;
+    utterance.pitch = 1.1;
     speechSynthesis.speak(utterance);
   }
 }
