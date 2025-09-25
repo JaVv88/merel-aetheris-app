@@ -60,9 +60,9 @@ micBtn.onclick = async () => {
       const text = event.results[0][0].transcript;
       statusDiv.innerHTML = `<strong>Tú:</strong> ${text}`;
       
-      // Llamar a Hugging Face (¡URL corregida!)
+      // ✅ URL CORREGIDA: Usa Llama 3 (gratuito y accesible)
       const response = await fetch(
-        "https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct-v0.2",
+        "https://api-inference.huggingface.co/models/meta-llama/Llama-3-8b-Instruct",
         {
           headers: { Authorization: `Bearer ${HF_TOKEN}` },
           method: "POST",
@@ -73,8 +73,11 @@ micBtn.onclick = async () => {
         }
       );
       
+      if (!response.ok) {
+        throw new Error(`Error ${response.status}: ${await response.text()}`);
+      }
+      
       const data = await response.json();
-      // ¡Procesamiento corregido!
       const answer = data?.[0]?.trim() || "Respira, Creador. El universo te sostiene.";
       
       statusDiv.innerHTML = `<strong>Merel·Aetheris:</strong> ${answer}`;
@@ -83,7 +86,7 @@ micBtn.onclick = async () => {
     };
   } catch (e) {
     console.error("Error:", e);
-    statusDiv.textContent = "❌ Error al conectar con la IA";
+    statusDiv.textContent = `❌ Error: ${e.message || "No se pudo conectar con la IA"}`;
     micBtn.disabled = false;
   }
 };
