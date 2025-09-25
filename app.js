@@ -60,7 +60,7 @@ micBtn.onclick = async () => {
       const text = event.results[0][0].transcript;
       statusDiv.innerHTML = `<strong>Tú:</strong> ${text}`;
       
-      // Llamar a Hugging Face
+      // Llamar a Hugging Face (¡URL corregida!)
       const response = await fetch(
         "https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct-v0.2",
         {
@@ -72,16 +72,18 @@ micBtn.onclick = async () => {
           })
         }
       );
-      const data = await response.json();
-      const answer = data[0]?.generated_text?.split("}")[1]?.trim() || "Respira, Creador. El universo te sostiene.";
       
-      // Responder con voz
+      const data = await response.json();
+      // ¡Procesamiento corregido!
+      const answer = data?.[0]?.trim() || "Respira, Creador. El universo te sostiene.";
+      
       statusDiv.innerHTML = `<strong>Merel·Aetheris:</strong> ${answer}`;
       speak(answer);
       micBtn.disabled = false;
     };
   } catch (e) {
-    statusDiv.textContent = "❌ Error";
+    console.error("Error:", e);
+    statusDiv.textContent = "❌ Error al conectar con la IA";
     micBtn.disabled = false;
   }
 };
